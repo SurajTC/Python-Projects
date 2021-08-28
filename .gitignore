@@ -1,3 +1,7 @@
 # Ignoring virtual envirornment
 
 env/
+
+# Ignoring cache directory
+
+**/__pycache__/
