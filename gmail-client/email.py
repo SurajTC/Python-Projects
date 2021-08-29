@@ -4,17 +4,22 @@ import getpass
 
 from email_validator import validate_email
 
-def get_sender_mail():
-    gmail = input("Enter Sender Gmail Address : ")
-# password = input("Enter password for "+ gmail +" :")
+def validate_given_email(gmail):
     try:
         valid=validate_email(gmail)
         gmail=valid.email
+        return gmail
 
     except:
         print("\nError : invalid Email address\n")
         get_sender_mail()
-        return
+
+def get_sender_mail():
+    gmail = input("Enter Sender Gmail Address : ")
+# password = input("Enter password for "+ gmail +" :")
+    gmail = validate_given_email(gmail)
+    if not gmail:
+        get_sender_mail()
         
     password = getpass.getpass("Enter password for "+ gmail +" :")
 
